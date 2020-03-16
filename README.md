@@ -9,19 +9,43 @@
 **Contents**
 
 * About
+* Changes in this Fork
+* Using Leiningen
 * Getting Started
 * Usage
 * Documentation
 * Release Notes
 * Donating
 
-## Aboout
+## About
 
 This project provides a Clojure interface to Google's
 [protocol buffers](http://code.google.com/p/protobuf). Protocol buffers can be
 used to communicate with other languages over the network, and they are WAY
 faster to serialize and deserialize than standard Clojure objects.
 
+## Changes in this Fork
+
+Changes in Protocol Buffer's "syntax3" require some changes in the library to correct 'bug's:
+
+1. [mapdef.clj](src/clj/protobuf/impl/flatland/mapdef.clj) was failing at line 39 due to changes in the protobuf Java implementation. Specifically, messages are `Descriptors$FileDescriptor`, not the `Descriptors$Descriptor` required.
+
+
+## Using Leiningen
+
+To run all the tests, type:
+
+    lein test-all
+
+To work at the repl, type:
+
+    lein repl
+
+There are some "Rich Comments" for repl'ing in:
+
+* [syntax_3_test.clj](test/protobuf/examples/syntax_3_test.clj)
+* [core.clj](src/clj/protobuf/core.clj)
+* [mapdef.clj](src/clj/protobuf/impl/flatland/mapdef.clj)
 
 ## Getting Started
 
@@ -72,7 +96,7 @@ Now you can use the protocol buffer in Clojure:
 
 ```clojure
 (require '[protobuf.core :as protobuf])
-(import '(your.namespace.person Example$Person)
+(import '(your.namespace.person Example$Person))
 
 (def alice (protobuf/create Example$Person
                             {:id 108
