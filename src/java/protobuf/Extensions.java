@@ -226,19 +226,11 @@ public final class Extensions {
       "tobuf.FieldOptions\030\272\226\003 \001(\rB\026\n\010protobufB\n" +
       "Extensions"
     };
-    com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
-        new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
-          public com.google.protobuf.ExtensionRegistry assignDescriptors(
-              com.google.protobuf.Descriptors.FileDescriptor root) {
-            descriptor = root;
-            return null;
-          }
-        };
-    com.google.protobuf.Descriptors.FileDescriptor
+    descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
           com.google.protobuf.DescriptorProtos.getDescriptor(),
-        }, assigner);
+        });
     set.internalInit(descriptor.getExtensions().get(0));
     map.internalInit(descriptor.getExtensions().get(1));
     mapBy.internalInit(descriptor.getExtensions().get(2));
