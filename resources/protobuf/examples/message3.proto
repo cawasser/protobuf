@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package protobuf.examples.message3;
+
+import "protobuf/extensions.proto";
+import "protobuf/examples/person3.proto";
+
+message Message {
+    Person sender = 1;
+    string content = 2;
+}
