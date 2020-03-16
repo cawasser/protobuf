@@ -207,7 +207,7 @@ service's ["About" page][libera-about].
 [clojure-v]: https://img.shields.io/badge/clojure-1.8.0-blue.svg
 [clojars]: https://clojars.org/clojusc/protobuf
 [clojars-badge]: https://img.shields.io/clojars/v/clojusc/protobuf.svg
-[docs]: https://clojusc.github.io/protobuf
+[docs]: docs/index.html
 [donation-request]: https://github.com/clojusc/protobuf/issues/29
 [libera-wiki]: https://en.wikipedia.org/wiki/Liberapay
 [libera-about]: https://liberapay.com/about/
