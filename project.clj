@@ -56,6 +56,12 @@
              ; :1.7 {:dependencies [[org.clojure/clojure "1.7.0"]]}
              :1.8         {:dependencies [[org.clojure/clojure "1.8.0"]]}
              :1.9         {:dependencies [[org.clojure/clojure "1.9.0"]]}}
+
+  :shell {:commands {"bin/javadoc" {:windows "bin/javadoc.bat"}
+                     "bin/compile-protobuf-extension" {:windows "bin/compile-protobuf-extension.bat"}
+                     "bin/compile-test-protobufs" {:windows "bin/compile-test-protobufs.bat"}
+                     "bin/compile-example-protobufs" {:windows "bin/compile-example-protobufs.bat"}}}
+
   :aliases {
             ;; Dev tasks
             "ubercompile"      [

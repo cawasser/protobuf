@@ -11,6 +11,7 @@
 * About
 * Changes in this Fork
 * Using Leiningen
+* Developing on Windows
 * Getting Started
 * Usage
 * Documentation
@@ -46,6 +47,18 @@ There are some "Rich Comments" for repl'ing in:
 * [syntax_3_test.clj](test/protobuf/examples/syntax_3_test.clj)
 * [core.clj](src/clj/protobuf/core.clj)
 * [mapdef.clj](src/clj/protobuf/impl/flatland/mapdef.clj)
+
+
+## Developing on Windows
+
+This fork add the ability to devlop the library on Windows assu ming the `protoc` compiler  
+is installed in `C:\Program Files\Protoc`. If you ahve your protoc compile installed elsewhere
+you will need to update:
+
+* [compile-example-protobufs.bat](bin/compile-example-protobufs.bat)
+* [compile-protobuf-extension.bat](bin/compile-protobuf-extension.bat)
+* [compile-test-protobufs.bat](bin/compile-test-protobufs.bat)
+* [javadoc.bat](bin/javadoc.bat)
 
 ## Getting Started
 
