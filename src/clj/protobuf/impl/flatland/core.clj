@@ -24,10 +24,10 @@
                  clojure.lang.Seqable
                  java.lang.Iterable]
     :init init
-    :constructors {[java.lang.Class clojure.lang.APersistentMap] []
-                   [java.lang.Class "[B"] []
+    :constructors {[java.lang.Class clojure.lang.APersistentMap]          []
+                   [java.lang.Class "[B"]                                 []
                    [java.lang.Class com.google.protobuf.CodedInputStream] []
-                   [java.lang.Class java.io.InputStream] []}
+                   [java.lang.Class java.io.InputStream]                  []}
     :methods [^:static [schema [Object] Object]]
     :state contents
     :main false))
@@ -40,16 +40,16 @@
 
 (defn- wrap-all
   [protobuf-class java-wrapper instance]
-  {:instance instance
-   :java-wrapper java-wrapper
+  {:instance       instance
+   :java-wrapper   java-wrapper
    :protobuf-class protobuf-class})
 
 (defn -init
   [protobuf-class data]
   (let [wrapper (protobuf/mapdef protobuf-class)]
     [[] (wrap-all protobuf-class
-                  wrapper
-                  (get-instance wrapper data))]))
+          wrapper
+          (get-instance wrapper data))]))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;   clojure.lang.Associative   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -118,23 +118,23 @@
 (defn -schema
   [protobuf-class]
   (protobuf/mapdef->schema
-   (protobuf/mapdef protobuf-class)))
+    (protobuf/mapdef protobuf-class)))
 
 (def behaviour
-  {:->bytes (fn [this]
-             (protobuf-map/->bytes (common/get-instance this)))
+  {:->bytes  (fn [this]
+               (protobuf-map/->bytes (common/get-instance this)))
    :->schema (fn [this]
-             (protobuf/mapdef->schema (common/get-wrapper this)))
-   :bytes-> (fn [this bytes]
-             (new protobuf.impl.flatland.core.FlatlandProtoBuf
-               (common/get-class this)
-               (protobuf/parse (common/get-wrapper this) bytes)))
-   :syntax (fn [this]
-             (syntax/format (.getSyntax (.file (common/get-wrapper this)))))
-   :read (fn [this in]
-          (new protobuf.impl.flatland.core.FlatlandProtoBuf
-            (common/get-class this)
-            (first
-              (protobuf/read (common/get-wrapper this) in))))
-   :write (fn [this out]
-           (protobuf/write out (common/get-instance this)))})
+               (protobuf/mapdef->schema (common/get-wrapper this)))
+   :bytes->  (fn [this bytes]
+               (new protobuf.impl.flatland.core.FlatlandProtoBuf
+                 (common/get-class this)
+                 (protobuf/parse (common/get-wrapper this) bytes)))
+   :syntax   (fn [this]
+               (syntax/format (.getSyntax (.file (common/get-wrapper this)))))
+   :read     (fn [this in]
+               (new protobuf.impl.flatland.core.FlatlandProtoBuf
+                 (common/get-class this)
+                 (first
+                   (protobuf/read (common/get-wrapper this) in))))
+   :write    (fn [this out]
+               (protobuf/write out (common/get-instance this)))})
